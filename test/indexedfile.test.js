@@ -1,4 +1,5 @@
 const fs = require('fs-extra')
+const { LocalFile, BlobFile } = require('generic-filehandle')
 const { BgzfFilehandle } = require('../src')
 
 async function testRead(basename, length, position) {
@@ -43,4 +44,40 @@ describe('indexed BGZF file', () => {
     await testRead('T_ko.2bit', 10, 0)
     await testRead('T_ko.2bit', 10, 1000000)
   })
+})
+
+test('test vcf file with path', async () => {
+  const f = new BgzfFilehandle({
+    gziPath: require.resolve('./data/test.vcf.gz.gzi'),
+    path: require.resolve('./data/test.vcf.gz'),
+  })
+  const { size } = await f.stat()
+  expect(size).toEqual(1749)
+})
+
+test('test vcf file with filehandle/LocalFile', async () => {
+  const f = new BgzfFilehandle({
+    gziFilehandle: new LocalFile(require.resolve('./data/test.vcf.gz.gzi')),
+    filehandle: new LocalFile(require.resolve('./data/test.vcf.gz')),
+  })
+  const { size } = await f.stat()
+  expect(size).toEqual(1749)
+  const stats = await f.stat()
+})
+
+test('test vcf file with filehandle/BlobFile', async () => {
+  const f = new BgzfFilehandle({
+    gziFilehandle: new BlobFile(
+      new Blob([fs.readFileSync(require.resolve('./data/test.vcf.gz.gzi'))], {
+        type: 'text/plain',
+      }),
+    ),
+    filehandle: new BlobFile(
+      new Blob([fs.readFileSync(require.resolve('./data/test.vcf.gz'))], {
+        type: 'text/plain',
+      }),
+    ),
+  })
+  const { size } = await f.stat()
+  expect(size).toEqual(1749)
 })

@@ -1,5 +1,5 @@
+const { LocalFile } = require('generic-filehandle')
 const { unzip } = require('./unzip')
-const LocalFile = require('./localFile')
 const GziIndex = require('./gziIndex')
 
 class BgzFilehandle {
@@ -34,6 +34,7 @@ class BgzFilehandle {
     const buf = Buffer.allocUnsafe(4)
     // note: there should be a 28-byte EOF marker (an empty block) at
     // the end of the file, so we skip backward past that
+
     const { bytesRead } = await this.filehandle.read(buf, 0, 4, size - 28 - 4)
     if (bytesRead !== 4) throw new Error('read error')
     const lastBlockUncompressedSize = buf.readUInt32LE(0)

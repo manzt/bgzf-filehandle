@@ -1,5 +1,5 @@
 const Long = require('long')
-const LocalFile = require('./localFile')
+const {LocalFile} = require('generic-filehandle')
 
 // const COMPRESSED_POSITION = 0
 const UNCOMPRESSED_POSITION = 1
