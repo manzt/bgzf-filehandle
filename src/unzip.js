@@ -151,7 +151,7 @@ async function unzipChunkSlice(inputData, chunk) {
 
 // in node, just use the native unzipping with Z_SYNC_FLUSH
 function nodeUnzip(input) {
-  return gunzip(input, {
+  return zlib.gunzipSync(input, {
     finishFlush: (zlib.constants || zlib).Z_SYNC_FLUSH,
   })
 }
