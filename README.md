@@ -1,6 +1,6 @@
 
 [![NPM version](https://img.shields.io/npm/v/@gmod/bgzf-filehandle.svg?style=flat-square)](https://npmjs.org/package/@gmod/bgzf-filehandle)
-[![Build Status](https://img.shields.io/travis/GMOD/bgzf-filehandle/master.svg?style=flat-square)](https://travis-ci.org/GMOD/bgzf-filehandle) [![Greenkeeper badge](https://badges.greenkeeper.io/GMOD/bgzf-filehandle.svg)](https://greenkeeper.io/) 
+[![Build Status](https://img.shields.io/travis/GMOD/bgzf-filehandle/master.svg?style=flat-square)](https://travis-ci.org/GMOD/bgzf-filehandle)
 [![codecov](https://codecov.io/gh/GMOD/bgzf-filehandle/branch/master/graph/badge.svg)](https://codecov.io/gh/GMOD/bgzf-filehandle)
 
 
