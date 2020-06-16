@@ -1,8 +1,5 @@
 /* eslint-disable consistent-return */
 const zlib = require('zlib')
-const { promisify } = require('es6-promisify')
-
-const gunzip = promisify(zlib.gunzip)
 
 const { Z_SYNC_FLUSH, Inflate } = require('pako')
 
@@ -157,7 +154,7 @@ function nodeUnzip(input) {
 }
 
 module.exports = {
-  unzip: typeof __webpack_require__ === 'function' ? pakoUnzip : nodeUnzip, // eslint-disable-line
+  unzip: typeof __webpack_require__ === "function" ? pakoUnzip : nodeUnzip, // eslint-disable-line
   unzipChunk,
   unzipChunkSlice,
   nodeUnzip,
